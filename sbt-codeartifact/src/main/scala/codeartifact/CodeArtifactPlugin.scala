@@ -24,6 +24,7 @@ object CodeArtifactPlugin extends AutoPlugin {
   def codeArtifactSettings: Seq[Setting[_]] = Seq(
     codeArtifactPublish := dynamicallyPublish.value,
     codeArtifactRepo := CodeArtifactRepo.fromUrl(codeArtifactUrl.value),
+    // This is what forces us to have a network connection at all times
     codeArtifactToken := sys.env
       .get("CODEARTIFACT_AUTH_TOKEN")
       .orElse(
