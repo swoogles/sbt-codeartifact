@@ -1,0 +1,24 @@
+```unknown
+Publishing sbt plugins differs from publishing normal JVM projects in several key ways:
+1. Plugin Metadata: sbt plugins require additional metadata in the build definition to specify that they are
+   plugins. This includes setting the `sbtPlugin` key to `true` in the `build.sbt` file.
+   sbtPlugin := true
+2. Scala Version Compatibility: sbt plugins must be cross-built for specific versions of sbt and Scala. The sbt
+   version compatibility is specified using the `sbtVersion` setting, and you often need to ensure compatibility
+   with multiple Scala versions.
+3. Publishing Repository: sbt plugins are typically published to a different repository than standard JVM
+   artifacts. The most common repository for sbt plugins is the `sbt-plugin-releases` or `sbt-plugin-snapshots`
+   repositories on Maven Central or other similar repositories.
+4. Plugin Identifier: sbt plugins require a unique identifier defined through the `organization` and `name`
+   settings. This helps in uniquely identifying the plugin in the sbt ecosystem.
+5. **I think this is the key point** Plugin Versioning: It's important to follow versioning conventions that align with sbt's expectations, often
+   ensuring compatibility with specific sbt versions. This might involve using version suffixes to denote
+   compatibility (e.g., `1.0.0-sbt-1.0`).
+6. Usage in Projects: Once published, sbt plugins are used differently than regular dependencies. They are added
+   to the `project/plugins.sbt` file of an sbt project, rather than the `libraryDependencies` in the `build.sbt`.
+7. Testing and Compatibility: Testing sbt plugins often requires setting up multiple sbt versions to ensure
+   compatibility, which might not be a consideration for standard JVM projects.
+In summary, while both sbt plugins and normal JVM projects involve compiling and packaging Scala or Java code, sbt
+plugins require additional considerations for metadata, compatibility, and publishing locations specific to the
+sbt ecosystem.
+```

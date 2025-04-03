@@ -23,11 +23,20 @@ object CodeArtifact {
       .durationSeconds(15.minutes.toSeconds)
       .build()
 
-  private def getAuthTokenFromRequest(req: GetAuthorizationTokenRequest): String =
-    CodeartifactClient
-      .create()
-      .getAuthorizationToken(req)
-      .authorizationToken()
+  private def getAuthTokenFromRequest(req: GetAuthorizationTokenRequest): String = {
+    try {
+      CodeartifactClient
+        .create()
+        .getAuthorizationToken(req)
+        .authorizationToken()
+    } catch {
+      case _: Exception =>
+        println(
+          "FAILED TO CONTACT CodeArtifact. You will be restricted to local dependencies for this session."
+        )
+        "**INVALID TOKEN**"
+    }
+  }
 
   def getAuthToken(repo: CodeArtifactRepo): String =
     getAuthTokenFromRequest(getAuthorizationTokenRequest(repo.domain, repo.owner))

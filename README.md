@@ -1,8 +1,16 @@
-# SBT CodeArtifact
+# SBT CodeArtifact **Forked**
+
+To function off-line, you must `publishLocal` this plugin.
+
+- Notice: this means projects will *require* this plugin to be installed locally.
+    - They will fail if pushed with this dependency still in place
+
+# Everything below this point is unchanged from the upstream repo.
 
 [![Maven][maven]][mavenlink]
 
 [maven]: https://maven-badges.herokuapp.com/maven-central/io.github.bbstilson/sbt-codeartifact/badge.svg?kill_cache=1&color=blue&style=for-the-badge
+
 [mavenlink]: https://search.maven.org/search?q=g:io.github.bbstilson%20AND%20a:sbt-codeartifact
 
 An sbt plugin for publishing/consuming packages to/from AWS CodeArtifact.
@@ -17,7 +25,8 @@ addSbtPlugin("io.github.bbstilson" % "sbt-codeartifact" % version)
 
 ## Usage
 
-Note that when specifying `sbt-codeartifact` settings in `project/*.scala` files (as opposed to in the root `build.sbt`), you will need to add the following import:
+Note that when specifying `sbt-codeartifact` settings in `project/*.scala` files (as opposed to in the root
+`build.sbt`), you will need to add the following import:
 
 ```scala
 import codeartifact.CodeArtifactKeys._
@@ -25,9 +34,11 @@ import codeartifact.CodeArtifactKeys._
 
 ## Publishing
 
-CodeArtifact provides instructions on how to connect to your repository. Click "View Connection Instructions", then choose "gradle", then copy the `url`.
+CodeArtifact provides instructions on how to connect to your repository. Click "View Connection Instructions", then
+choose "gradle", then copy the `url`.
 
-Here's an example `build.sbt` file that assumes a CodeArtifact repository named "private" in the "com.example" domain has been created:
+Here's an example `build.sbt` file that assumes a CodeArtifact repository named "private" in the "com.example" domain
+has been created:
 
 ```scala
 organization := "com.example"
@@ -49,7 +60,8 @@ sbt:library> codeArtifactPublish
 
 ## Consuming
 
-A resolver for your repository is added based on the `codeArtifactUrl` key. You can add more repositories manually like so:
+A resolver for your repository is added based on the `codeArtifactUrl` key. You can add more repositories manually like
+so:
 
 ```scala
 val codeArtifactUrlBase = "https://com-example-1234567890.d.codeartifact.us-west-2.amazonaws.com/maven/"
@@ -70,9 +82,11 @@ sbt:library> show resolvers
 
 ## Credentials
 
-Your CodeArtifact Authentication Token is fetched dynamically using the AWS Java SDK. Credentials are resolved using the [DefaultCredentialsProvider](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/auth/credentials/DefaultCredentialsProvider.html).
+Your CodeArtifact Authentication Token is fetched dynamically using the AWS Java SDK. Credentials are resolved using
+the [DefaultCredentialsProvider](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/auth/credentials/DefaultCredentialsProvider.html).
 
-If you would like to provide the token statically (for example, if your AWS creds are unavailable), then you can provide the token as an environment variable:
+If you would like to provide the token statically (for example, if your AWS creds are unavailable), then you can provide
+the token as an environment variable:
 
 ```bash
 export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain domain-name --domain-owner domain-owner-id --query authorizationToken --output text --profile profile-name`
@@ -80,7 +94,10 @@ export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domai
 
 ## SBT Release
 
-If you would like to use this in conjunction with [`sbt-release`](https://github.com/sbt/sbt-release), you will need to override the [default release process](https://github.com/sbt/sbt-release#can-we-finally-customize-that-release-process-please); specifically, the publish step:
+If you would like to use this in conjunction with [`sbt-release`](https://github.com/sbt/sbt-release), you will need to
+override
+the [default release process](https://github.com/sbt/sbt-release#can-we-finally-customize-that-release-process-please);
+specifically, the publish step:
 
 ```scala
 import ReleaseTransformations._
