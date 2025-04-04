@@ -1,1 +1,1 @@
-addSbtPlugin("io.github.bbstilson" % "sbt-codeartifact" % System.getProperty("plugin.version"))
+addSbtPlugin("io.github.swoogles" % "sbt-codeartifact" % System.getProperty("plugin.version"))
