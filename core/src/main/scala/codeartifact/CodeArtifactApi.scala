@@ -1,6 +1,6 @@
 package codeartifact
 
-import scala.concurrent.duration.*
+import scala.concurrent.duration._
 
 final class CodeArtifactApi(
   token: String,

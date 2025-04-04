@@ -11,29 +11,47 @@ inThisBuild(
         url("https://github.com/swoogles")
       )
     ),
+    sbtPluginPublishLegacyMavenStyle := false
   )
 )
 
 import xerial.sbt.Sonatype.sonatypeCentralHost
 ThisBuild / sonatypeCredentialHost := sonatypeCentralHost
 
-//ThisBuild / versionScheme := Some("semver-spec")
+ThisBuild / versionScheme := Some("semver-spec")
 
 lazy val testSettings: Seq[Setting[_]] = Seq(
-//  scriptedLaunchOpts := {
-//    scriptedLaunchOpts.value ++ Seq(
-//      "-Xmx1024M",
-//      "-Dplugin.version=" + version.value
-//    )
-//  },
-//  scriptedBufferLog := false
+  scriptedLaunchOpts := {
+    scriptedLaunchOpts.value ++ Seq(
+      "-Xmx1024M",
+      "-Dplugin.version=" + version.value
+    )
+  },
+  scriptedBufferLog := false
 )
 
-lazy val root = project
+lazy val core = project
+  .in(file("core"))
+  .settings(testSettings)
+  .settings(
+    sbtPlugin := false
+  )
+
+lazy val `sbt-codeartifact` = project
   .in(file("sbt-codeartifact"))
+  .dependsOn(core)
+  .settings(testSettings)
   .settings(
     sbtPlugin := true,
-    sbtPluginPublishLegacyMavenStyle := false
+//    crossPaths := false,
+
+  )
+
+lazy val root = project
+  .in(file("."))
+  .aggregate(core, `sbt-codeartifact`)
+  .settings(
+    publish / skip := true,
   )
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
