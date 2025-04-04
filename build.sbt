@@ -36,9 +36,6 @@ lazy val `sbt-codeartifact` = project
   .in(file("sbt-codeartifact"))
   .dependsOn(core)
   .settings(testSettings)
-  .settings(
-    sbtPlugin := true,
-  )
 
 lazy val root = project
   .in(file("."))
