@@ -10,7 +10,7 @@ inThisBuild(
         "billfrasure@gmail.com",
         url("https://github.com/swoogles")
       )
-    ),
+    )
   )
 )
 
@@ -32,7 +32,7 @@ lazy val core = project
   .in(file("core"))
   .settings(testSettings)
   .settings(
-    publish / skip := true,
+    publish / skip := true
   )
 
 lazy val `sbt-codeartifact` = project
@@ -44,5 +44,5 @@ lazy val root = project
   .in(file("."))
   .aggregate(core, `sbt-codeartifact`)
   .settings(
-    publish / skip := true,
+    publish / skip := true
   )
