@@ -40,8 +40,11 @@ lazy val `sbt-codeartifact` = project
   .dependsOn(core)
   .settings(testSettings)
   .settings(
-    publishMavenStyle := false ,
-      sbtPlugin := true
+    sbtPlugin := true,
+    // Explicitly set the artifact name
+    artifact in (Compile, packageBin) := {
+      (artifact in (Compile, packageBin)).value.withName("sbt-codeartifact_2.12_1.0")
+    }
   )
 
 lazy val root = project
