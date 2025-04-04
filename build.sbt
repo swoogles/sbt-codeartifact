@@ -40,7 +40,6 @@ lazy val `sbt-codeartifact` = project
   .dependsOn(core)
   .settings(testSettings)
   .settings(
-    crossPaths := false,
     sbtPlugin := true
   )
 
