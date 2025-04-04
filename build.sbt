@@ -18,6 +18,8 @@ import xerial.sbt.Sonatype.sonatypeCentralHost
 
 ThisBuild / sonatypeCredentialHost := sonatypeCentralHost
 
+ThisBuild / versionScheme := Some("semver-spec")
+
 lazy val testSettings: Seq[Setting[_]] = Seq(
   scriptedLaunchOpts := {
     scriptedLaunchOpts.value ++ Seq(
