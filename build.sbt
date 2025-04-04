@@ -14,8 +14,12 @@ inThisBuild(
   )
 )
 
-ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
-sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
+//ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
+//sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
+
+import xerial.sbt.Sonatype.sonatypeCentralHost
+
+ThisBuild / sonatypeCredentialHost := sonatypeCentralHost
 
 lazy val testSettings: Seq[Setting[_]] = Seq(
   scriptedLaunchOpts := {
