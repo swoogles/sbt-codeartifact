@@ -11,6 +11,7 @@ inThisBuild(
         url("https://github.com/swoogles")
       )
     ),
+    crossPaths := false,
   )
 )
 
@@ -33,6 +34,7 @@ lazy val core = project
   .settings(testSettings)
   .settings(
     publish / skip := true,
+    crossPaths := false,
   )
 
 lazy val `sbt-codeartifact` = project
