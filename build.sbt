@@ -10,12 +10,11 @@ inThisBuild(
         "billfrasure@gmail.com",
         url("https://github.com/swoogles")
       )
-    )
+    ),
+    crossPaths := false,
+    sbtPlugin := true
   )
 )
-
-//ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
-//sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
 
 import xerial.sbt.Sonatype.sonatypeCentralHost
 
@@ -48,6 +47,4 @@ lazy val root = project
   .aggregate(core, `sbt-codeartifact`)
   .settings(
     publish / skip := true,
-//    crossScalaVersions := List("2.13.1", "2.12.10", "2.11.12"),
-//    crossSbtVersions := Nil
   )
