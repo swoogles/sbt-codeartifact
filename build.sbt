@@ -40,7 +40,8 @@ lazy val `sbt-codeartifact` = project
   .dependsOn(core)
   .settings(testSettings)
   .settings(
-    sbtPlugin := true
+    publishMavenStyle := false ,
+      sbtPlugin := true
   )
 
 lazy val root = project
