@@ -11,7 +11,6 @@ inThisBuild(
         url("https://github.com/swoogles")
       )
     ),
-    crossPaths := false,
   )
 )
 
