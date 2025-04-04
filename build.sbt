@@ -44,5 +44,6 @@ lazy val root = project
   .in(file("."))
   .aggregate(core, `sbt-codeartifact`)
   .settings(
-    publish / skip := true
+    publish / skip := true,
+    crossScalaVersions := List("2.13.1", "2.12.10", "2.11.12")
   )
