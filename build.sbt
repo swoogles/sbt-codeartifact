@@ -33,25 +33,17 @@ lazy val testSettings: Seq[Setting[_]] = Seq(
 lazy val core = project
   .in(file("core"))
   .settings(testSettings)
-  .settings(
-    sbtPlugin := false
-  )
 
 lazy val `sbt-codeartifact` = project
   .in(file("sbt-codeartifact"))
   .dependsOn(core)
   .settings(testSettings)
-  .settings(
-    sbtPlugin := true,
-//    crossPaths := false,
-
-  )
 
 lazy val root = project
   .in(file("."))
   .aggregate(core, `sbt-codeartifact`)
   .settings(
-    publish / skip := true,
+    publish / skip := true
   )
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
