@@ -33,6 +33,7 @@ lazy val root = project
   .in(file("sbt-codeartifact"))
   .settings(
     sbtPlugin := true,
+    sbtPluginPublishLegacyMavenStyle := false
   )
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
