@@ -31,9 +31,6 @@ lazy val testSettings: Seq[Setting[_]] = Seq(
 lazy val core = project
   .in(file("core"))
   .settings(testSettings)
-  .settings(
-    publish / skip := true,
-  )
 
 lazy val `sbt-codeartifact` = project
   .in(file("sbt-codeartifact"))
@@ -41,10 +38,6 @@ lazy val `sbt-codeartifact` = project
   .settings(testSettings)
   .settings(
     sbtPlugin := true,
-    // Explicitly set the artifact name
-    artifact in (Compile, packageBin) := {
-      (artifact in (Compile, packageBin)).value.withName("sbt-codeartifact_2.12_1.0")
-    }
   )
 
 lazy val root = project
