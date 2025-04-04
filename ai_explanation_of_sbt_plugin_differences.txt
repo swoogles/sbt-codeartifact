@@ -21,4 +21,5 @@ Publishing sbt plugins differs from publishing normal JVM projects in several ke
 In summary, while both sbt plugins and normal JVM projects involve compiling and packaging Scala or Java code, sbt
 plugins require additional considerations for metadata, compatibility, and publishing locations specific to the
 sbt ecosystem.
+Maybe.
 ```
