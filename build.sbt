@@ -14,8 +14,8 @@ inThisBuild(
   )
 )
 
-//import xerial.sbt.Sonatype.sonatypeCentralHost
-//ThisBuild / sonatypeCredentialHost := sonatypeCentralHost
+import xerial.sbt.Sonatype.sonatypeCentralHost
+ThisBuild / sonatypeCredentialHost := sonatypeCentralHost
 
 //ThisBuild / versionScheme := Some("semver-spec")
 
