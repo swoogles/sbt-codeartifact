@@ -1,10 +1,10 @@
 package codeartifact
 
+import sbt.*
 import software.amazon.awssdk.services.codeartifact.CodeartifactClient
 import software.amazon.awssdk.services.codeartifact.model.GetAuthorizationTokenRequest
 
-import sbt._
-import scala.concurrent.duration._
+import scala.concurrent.duration.*
 
 object CodeArtifact {
 

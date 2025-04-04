@@ -1,6 +1,6 @@
 package codeartifact
 
-import sbt._
+import sbt.*
 
 case class CodeArtifactRepo(
   name: String,

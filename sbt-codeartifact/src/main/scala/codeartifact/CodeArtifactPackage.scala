@@ -1,8 +1,7 @@
 package codeartifact
 
+import java.time.{Instant, ZoneId}
 import java.time.format.DateTimeFormatter
-import java.time.ZoneId
-import java.time.Instant
 
 final case class CodeArtifactPackage(
   organization: String,
