@@ -31,9 +31,6 @@ lazy val testSettings: Seq[Setting[_]] = Seq(
 lazy val core = project
   .in(file("core"))
   .settings(testSettings)
-  .settings(
-    publish / skip := true
-  )
 
 lazy val `sbt-codeartifact` = project
   .in(file("sbt-codeartifact"))
