@@ -33,7 +33,6 @@ lazy val core = project
   .settings(testSettings)
   .settings(
     publish / skip := true,
-    crossPaths := false,
   )
 
 lazy val `sbt-codeartifact` = project
@@ -41,6 +40,7 @@ lazy val `sbt-codeartifact` = project
   .dependsOn(core)
   .settings(testSettings)
   .settings(
+    crossPaths := false,
     sbtPlugin := true
   )
 
