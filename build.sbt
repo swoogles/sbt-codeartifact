@@ -1,18 +1,21 @@
 inThisBuild(
   List(
-    organization := "io.github.bbstilson",
-    homepage := Some(url("https://github.com/bbstilson/sbt-codeartifact")),
+    organization := "io.github.swoogles",
+    homepage := Some(url("https://github.com/swoogles/sbt-codeartifact")),
     licenses := Seq("MIT" -> url("https://choosealicense.com/licenses/mit/")),
     developers := List(
       Developer(
-        "bbstilson",
-        "Brandon Stilson",
-        "bbstilson@fastmail.com",
-        url("https://github.com/bbstilson")
+        "swoogles",
+        "Bill Frasure",
+        "billfrasure@gmail.com",
+        url("https://github.com/swoogles")
       )
     )
   )
 )
+
+ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
+sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
 
 lazy val testSettings: Seq[Setting[_]] = Seq(
   scriptedLaunchOpts := {
