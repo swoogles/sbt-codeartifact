@@ -53,6 +53,7 @@ object CodeArtifactPlugin extends AutoPlugin {
     },
     publishTo := Some(codeArtifactRepo.value.resolver),
     publishMavenStyle := true,
+    sbtPluginPublishLegacyMavenStyle := false,
     // Useful for consuming artifacts.
     resolvers ++= (codeArtifactUrl.value +: codeArtifactResolvers.value)
       .map(CodeArtifactRepo.fromUrl)

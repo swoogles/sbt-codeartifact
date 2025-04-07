@@ -8,7 +8,7 @@ scalacOptions -= "-Xfatal-warnings"
 
 pluginCrossBuild / sbtVersion := {
   scalaBinaryVersion.value match {
-    case "2.12" => "1.2.8" // set minimum sbt version
+    case "2.12" => "1.9.7" // set minimum sbt version
   }
 }
 
