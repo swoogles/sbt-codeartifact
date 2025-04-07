@@ -8,7 +8,7 @@ object CodeArtifactPackageSpec extends TestSuite {
   val ScalaVersion = "3.2.1"
 
   val basePackage =
-    CodeArtifactPackage("org.example", "name", PackageVersion, ScalaVersion, None, true)
+    CodeArtifactPackage("org.example", "name", PackageVersion, ScalaVersion, None, isScalaProject = true, isSnapshot = false)
 
   val tests = Tests {
     test("asMaven") {
@@ -31,10 +31,24 @@ object CodeArtifactPackageSpec extends TestSuite {
     }
 
     test("mavenMetadata") {
-      val xml = scala.xml.XML.loadString(basePackage.mavenMetadata)
-      (xml \ "groupId").head.text ==> basePackage.organization
-      (xml \ "artifactId").head.text ==> basePackage.asMaven
-      (xml \ "versioning" \ "latest").head.text ==> basePackage.version
+      test("non-snapshot") {
+        val xml = scala.xml.XML.loadString(basePackage.mavenMetadata)
+        (xml \ "groupId").head.text ==> basePackage.organization
+        (xml \ "artifactId").head.text ==> basePackage.asMaven
+        (xml \ "versioning" \ "latest").head.text ==> basePackage.version
+      }
+      test("snapshot") {
+        // TODO Real, distinct logic here
+        val PackageVersionSnapshot = "1.2.3-SNAPSHOT"
+
+        val basePackage =
+          CodeArtifactPackage("org.example", "name", PackageVersionSnapshot, ScalaVersion, None, isScalaProject = true, isSnapshot = true) //
+
+        val xml = scala.xml.XML.loadString(basePackage.mavenMetadata)
+        (xml \ "groupId").head.text ==> basePackage.organization
+        (xml \ "artifactId").head.text ==> basePackage.asMaven
+//        (xml \ "versioning" \ "latest").head.text ==> basePackage.version
+      }
     }
   }
 }

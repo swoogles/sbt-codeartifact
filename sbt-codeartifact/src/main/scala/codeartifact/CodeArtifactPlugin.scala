@@ -42,7 +42,8 @@ object CodeArtifactPlugin extends AutoPlugin {
       scalaVersion = scalaVersion.value,
       sbtBinaryVersion = if (sbtPlugin.value) Some(sbtBinaryVersion.value) else None,
       // See: https://www.scala-sbt.org/1.x/docs/Cross-Build.html#Scala-version+specific+source+directory
-      isScalaProject = crossPaths.value
+      isScalaProject = crossPaths.value,
+      isSnapshot = isSnapshot.value
     ),
     credentials ++= {
       val token = codeArtifactToken.value
