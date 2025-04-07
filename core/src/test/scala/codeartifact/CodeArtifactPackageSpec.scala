@@ -8,7 +8,15 @@ object CodeArtifactPackageSpec extends TestSuite {
   val ScalaVersion = "3.2.1"
 
   val basePackage =
-    CodeArtifactPackage("org.example", "name", PackageVersion, ScalaVersion, None, isScalaProject = true, isSnapshot = false)
+    CodeArtifactPackage(
+      "org.example",
+      "name",
+      PackageVersion,
+      ScalaVersion,
+      None,
+      isScalaProject = true,
+      isSnapshot = false
+    )
 
   val tests = Tests {
     test("asMaven") {
@@ -42,7 +50,15 @@ object CodeArtifactPackageSpec extends TestSuite {
         val PackageVersionSnapshot = "1.2.3-SNAPSHOT"
 
         val basePackage =
-          CodeArtifactPackage("org.example", "name", PackageVersionSnapshot, ScalaVersion, None, isScalaProject = true, isSnapshot = true) //
+          CodeArtifactPackage(
+            "org.example",
+            "name",
+            PackageVersionSnapshot,
+            ScalaVersion,
+            None,
+            isScalaProject = true,
+            isSnapshot = true
+          ) //
 
         val xml = scala.xml.XML.loadString(basePackage.mavenMetadata)
         (xml \ "groupId").head.text ==> basePackage.organization
