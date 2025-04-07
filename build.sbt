@@ -10,16 +10,15 @@ inThisBuild(
         "billfrasure@gmail.com",
         url("https://github.com/swoogles")
       )
-    )
+    ),
+    sbtPluginPublishLegacyMavenStyle := false
   )
 )
 
-//ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
-//sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
-
 import xerial.sbt.Sonatype.sonatypeCentralHost
-
 ThisBuild / sonatypeCredentialHost := sonatypeCentralHost
+
+ThisBuild / versionScheme := Some("semver-spec")
 
 lazy val testSettings: Seq[Setting[_]] = Seq(
   scriptedLaunchOpts := {
@@ -46,3 +45,5 @@ lazy val root = project
   .settings(
     publish / skip := true
   )
+
+Global / onChangedBuildSource := ReloadOnSourceChanges

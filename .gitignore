@@ -9,3 +9,5 @@
 **/.ammonite/
 project/project
 project/metals.sbt
+.idea
+/.env
